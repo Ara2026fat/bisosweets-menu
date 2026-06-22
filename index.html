@@ -198,7 +198,7 @@ body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);min
 
 <header class="hero">
   <div class="hero-blob"></div><div class="hero-blob"></div>
-  <div class="logo-wrap"><img src="logo.jpg" alt="Bisosweets"></div>
+  <div class="logo-wrap"><img src="./logo.jpg" alt="Bisosweets"></div>
   <div class="brand">BISOSWEETS</div>
   <div class="tagline">The Finest Indulgences · حلويات يدوية فاخرة</div>
   <div class="divider"><span>🌸</span></div>
@@ -271,7 +271,7 @@ body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);min
 
 <script>
 const WA='966591355799';
-const BASE="";;
+// BASE removed
 
 const products=[
   {id:1,cat:'choc',name:'بوكس شوكولاتة مشكل',desc:'تشكيلة شوكولاتة داكنة وبيضاء يدوية الصنع',price:80,badge:'',img:'choc_box'},
@@ -307,7 +307,7 @@ let cart={},adminMode=false,customImgs={};
 
 function makeCard(p){
   const qty=cart[p.id]?.qty||0;
-  const imgSrc=customImgs[p.id]||(BASE+p.img+'.jpg');
+  const imgSrc=customImgs[p.id]||("./"+p.img+'.jpg');
   const d=document.createElement('div');
   d.className='card'+(unavail?' unavailable':'');d.dataset.id=p.id;
   let bh='';
@@ -387,7 +387,7 @@ function renderDrawer(){
   if(!items.length){el.innerHTML=`<div class="cart-empty"><div class="cart-empty-ico">🌸</div><div>السلة فارغة</div><div style="font-size:11px;margin-top:4px">أضيفي ما يشتهيكِ 💕</div></div>`;document.getElementById('dTotal').textContent='0 ر.س';return}
   el.innerHTML=items.map(i=>`
     <div class="ci">
-      <img class="ci-img" src="${customImgs[i.product.id]||(BASE+i.product.img+'.jpg')}" alt="${i.product.name}">
+      <img class="ci-img" src="${customImgs[i.product.id]||('./'+i.product.img+'.jpg')}" alt="${i.product.name}">
       <div class="ci-info">
         <div class="ci-name">${i.product.name}</div>
         <div class="ci-price">${i.product.price*i.qty} ر.س</div>
